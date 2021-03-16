@@ -109,3 +109,141 @@ function decrementTimer(){
 ```
 
 ## As a user, I can 'like' an individual number of the counter. I should see the count of the number of 'likes' associated with that number displayed.
+### Select heart and add event listener
+```
+      function onHeartClick() {
+        //event listener for counter
+        let heart = document.getElementById('<3')
+    
+        heart.addEventListener('click', likeNumber);
+    
+    
+    
+        //selector for number to see which number
+    
+      }
+```
+
+### Define likeNumber, function to be called when heart clicked
+```
+ function likeNumber(){
+    console.log("liked!")
+  }
+  // call at bottom:
+  onHeartClick()
+```
+### Define object (at top) to use to keep track of likes
+```
+const likeTracker = {}
+```
+### Build out likeNumber
+```
+      function likeNumber(){
+        let counter = document.getElementById('counter').innerText; // this is the number we're liking
+
+          //only want to set counter on click, otherwise will always be 0
+        let likeCounter = 0;
+
+        //likeTracker is object we created above to keep track of all the numbers' likes
+    
+    
+      }
+```
+- increment counter value in likeTracker depending on what counter was when clicked:
+- test in browser, see that likeTracker updating
+```
+      function likeNumber(){
+        let counter = document.getElementById('counter').innerText; // this is the number we're liking
+
+          //only want to set counter on click, otherwise will always be 0
+        let likeCounter = 0;
+
+        //likeTracker is object we created above to keep track of all the numbers' likes
+
+        if (likeTracker[counter]) {
+            likeTracker[counter] += 1;
+        } else {
+            likeTracker[counter] = {};
+        likeTracker[counter] = 1;
+        }
+    
+      }
+```
+#### Display likes 
+##### Add li when number first added to likes object:
+```
+      function likeNumber(){
+        let counter = document.getElementById('counter').innerText; // this is the number we're liking
+
+          //only want to set counter on click, otherwise will always be 0
+        let likeCounter = 0;
+
+        //likeTracker is object we created above to keep track of all the numbers' likes
+
+        if (likeTracker[counter]) {
+            likeTracker[counter] += 1;
+        } else {
+            likeTracker[counter] = {};
+            likeTracker[counter] = 1;
+
+            //new 
+            let newLi = document.createElement("li");
+            let phrase = counter + ' has ' +  likeTracker[counter] + ' likes.'
+            let text = document.createTextNode(phrase); // want to be able to append later
+            newLi.appendChild(text);
+            newLi.setAttribute("id", counter)//setting id so can select and change li later
+
+            // select likes container
+            const likes = document.querySelector('.likes')
+            likes.appendChild(newLi)
+        }
+    
+      }
+```
+##### Update li if counter already exists:
+```
+      function likeNumber(){
+        let counter = document.getElementById('counter').innerText; // this is the number we're liking
+
+          //only want to set counter on click, otherwise will always be 0
+        let likeCounter = 0;
+
+        //likeTracker is object we created above to keep track of all the numbers' likes
+
+        if (likeTracker[counter]) {
+            likeTracker[counter] += 1;
+
+            // NEW
+            let currentLi = document.getElementById(counter)
+            currentLi.innerText = counter + ' has ' +  likeTracker[counter] + ' likes.'
+
+        } else {
+            likeTracker[counter] = {};
+            likeTracker[counter] = 1;
+ 
+            let newLi = document.createElement("li");
+            let phrase = counter + ' has ' +  likeTracker[counter] + ' likes.'
+            let text = document.createTextNode(phrase); // want to be able to append later
+            newLi.appendChild(text);
+            newLi.setAttribute("id", counter)//setting id so can select and change li later
+
+            // select likes container
+            const likes = document.querySelector('.likes')
+            likes.appendChild(newLi)
+        }
+    
+      }
+```
+
+
+# To add later:
+## As a user, I can pause the counter, which should
+- pause the counter
+- disable all buttons except the pause button
+- the pause button should then show the text "resume."
+- When 'resume' is clicked, it should restart the counter and re-enable the buttons. 5. 
+
+## Comments
+- As a user, I can leave comments on my gameplay, such as: "Wow, what a fun game this is."
+
+

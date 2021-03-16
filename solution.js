@@ -60,10 +60,10 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     
       function likeNumber(){
-        let counter = document.getElementById('counter').innerText;
+        let counter = document.getElementById('counter').innerText; // this is the number we're liking
           //only want to set counter on click, otherwise will always be 0
         let likeCounter = 0;
-        //likeTrackeris hash we created above to keep track of all the numbers' likes
+        //likeTrackeris object we created above to keep track of all the numbers' likes
         if (!paused) {
           if (likeTracker[counter]) {
             likeTracker[counter] += 1;
