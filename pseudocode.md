@@ -142,7 +142,7 @@ const likeTracker = {}
         let counter = document.getElementById('counter').innerText; // this is the number we're liking
 
           //only want to set counter on click, otherwise will always be 0
-        let likeCounter = 0;
+        let likeCounter = 0; //WHAT IS THIS FOR? DONT THINK NEED
 
         //likeTracker is object we created above to keep track of all the numbers' likes
     
@@ -163,7 +163,6 @@ const likeTracker = {}
         if (likeTracker[counter]) {
             likeTracker[counter] += 1;
         } else {
-            likeTracker[counter] = {};
         likeTracker[counter] = 1;
         }
     
@@ -206,7 +205,7 @@ const likeTracker = {}
         let counter = document.getElementById('counter').innerText; // this is the number we're liking
 
           //only want to set counter on click, otherwise will always be 0
-        let likeCounter = 0;
+        let likeCounter = 0; 
 
         //likeTracker is object we created above to keep track of all the numbers' likes
 
